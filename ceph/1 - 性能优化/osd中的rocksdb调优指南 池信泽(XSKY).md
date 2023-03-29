@@ -1,0 +1,5 @@
+rocksdb的ceph目前的主流元数据kv持久化引擎，对于OSD的性能非常关键，rocksdb内部有很多参数可以调整，下面解释一些重点参数的含义：
+1. rocksdb_cache_size, rocksdb内存缓存大小，如果机器内存够大，且db规模小，强烈建议设置大些
+2. rocksdb_cache_index_and_filter_blocks, rocksdb中sst的index和filter占用的内存使用是否是复用rocksdb_cache_size的限制，如果机器内存足够，强烈建议分裂
+3. rocksdb_cache_index_and_filter_blocks_with_high_priority，把sst的index和filter放在缓存的高优先级位置，避免别淘汰
+4. rocksdb_pin_l0_filter_and_index_blocks_in_cache，如果内存缓存有限，是否只cache L0的index和filter
