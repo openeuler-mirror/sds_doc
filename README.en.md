@@ -1,35 +1,35 @@
 # openEuler SDS SIG
-## sig-SDS 愿景
+## Mission and Vision
 
-汇聚存储英才，共同打造高质量、高性能、高可靠性的分布式存储组件版本，构建丰富的南北向生态
+Gather storage talents, jointly to create high quality, high performance and high reliable distributed storage components. Build a rich software ecology.
 
-## 目标
+## Objectives and Scope
 
-- 紧跟原生社区，坚持“upstream first”原则，丰富ARM/openEuler分布式存储组件生态圈
-- 针对ARM架构开展优化，打造极致性能
-- 为openEuler发布版本的组件，决策版本、打造质量防护网，实现高质量发布
+- Follow the native community, adhere to the "upstream first" principle, and enrich the ARM / openEuler distributed storage component ecosystem
+- Optimize the ARM architecture for extreme performance
+- Provide quality protection for openEuler release components, choose release version, to achieve high quality release
+
+## Organization Meetings
+
+- Public meeting time: bi-weekly regular meeting, Tuesday morning 10:00~11:00 (UTC +8)
+- Meeting agenda and summary: https://etherpad.openeuler.org/p/sig-SDS-meetings
 
 
-## 组织会议
+## Members
 
-北京时间，双周二上午，10:00~11:00
-
-
-## 成员
-
-### Maintainer列表
+### Maintainer list
 
 - chixinze[@chixinze](https://gitee.com/chixinze)
 - liuzhiqiang[@liuzhiqiang26](https://gitee.com/liuzhiqiang26)
 - liuqinfei[@liuqinfei](https://gitee.com/liuqinfei) 
 - luorixin[@rosinL](https://gitee.com/rosinL)
 
-### Committer列表
+### Committer list
 
 - sunligang[@nick-slg-kylin](https://gitee.com/nick-slg-kylin)
 - Zhiwei-Dai[@Zhiwei-Dai](https://gitee.com/Zhiwei-Dai)
 
-### 模块责任人
+### Module developer
 
 - MON:
 - OSD:     luorixin
@@ -38,15 +38,13 @@
 - RADOS:   chixinze
 - RBD:     daizhiwei
 
-## 联系方式
+## Contact details
+- Mailing list: sds@openeuler.org / ceph@openeuler.org. Click the SDS link on the openEuler page to subscribe.
+- Contact the maintainers to join our Wechat discussion group.
 
-- 邮件列表 <sds@openeuler.org>
+## Item List
 
-## 项目清单
-
-项目名称：
-
-repository地址：
+RPM package projects (in alphabetical order)
 
 - https://gitee.com/openeuler/ceph_dev
 - https://gitee.com/src-openeuler/ceph
@@ -60,8 +58,7 @@ repository地址：
 - https://gitee.com/src-openeuler/teuthology
 - https://gitee.com/src-openeuler/zfs
 
-## 本项目目录结构
-
+## Directory structure of this project
 |--- README.md                       -- Description of sig SDS in Chinese. 
 |--- README.en.md                    -- Description of sig SDS in English. 
 |--- minutes/                        -- minutes for regular meeting.
@@ -72,3 +69,9 @@ repository地址：
 |    |--- ecological-enabling/ 
 |--- lustre/                         -- Houses the doc and scripts of Lustre.
 |--- daos/                           -- Houses the doc and scripts of Daos.
+
+You are welcome to join us. Your contribution will be appreciated.
+
+
+You can contact us in mailinglist at sds@openeuler.org or .
+
