@@ -28,6 +28,9 @@ Gather storage talents, jointly to create high quality, high performance and hig
 
 - sunligang[@nick-slg-kylin](https://gitee.com/nick-slg-kylin)
 - Zhiwei-Dai[@Zhiwei-Dai](https://gitee.com/Zhiwei-Dai)
+- Xinliang Liu[@xin3liang](https://gitee.com/xin3liang)
+- yangxiaoliang[@ceph_yang](https://gitee.com/ceph_yang)
+
 
 ### Module developer
 
@@ -37,6 +40,8 @@ Gather storage talents, jointly to create high quality, high performance and hig
 - MDS:     sunligang
 - RADOS:   chixinze
 - RBD:     daizhiwei
+- Lustre/OpenZFS: Xinliang Liu
+- OSD/ceph-volume: yangxiaoliang
 
 ## Contact details
 - Mailing list: sds@openeuler.org / ceph@openeuler.org. Click the SDS link on the openEuler page to subscribe.
