@@ -2,12 +2,13 @@
 
 过去几年，由于互联网+和企业数字化转型的驱动，数据中心已进入全闪存时代，存储高性能吞吐与SCSI协议传输低性能吞吐之间的矛盾日益严重，从而出现了NVMe存储协议，实现了整个存储性能10倍甚至百倍以上的提升。
 
-![](https://gitee.com/tao191/sds_doc/blob/master/solutions/img/1.png)
+![](https://gitee.com/tao191/sds_doc/raw/master/solutions/img/1.png)
+
 
 随着介质性能的快速提升，网络协议反而成为了数据中心的新性能瓶颈，业务开始呼唤更高质量的网络， NVMe over Fabric（简称NoF）应运而生。
 NVMe over Fabrics定义了一个通用架构，支持在不同的传输网络上访问NVMe块存储设备。通过NVMe-oF前端接口，实现规模组网扩展，在数据中心内远距离访问NVMe设备和NVM subsystem。NVMe over Fabrics支持多种传输协议，包括FC和RDMA，TCP等网络。如下图所示：
 
-![](https://gitee.com/tao191/sds_doc/blob/master/solutions/img/2.png)
+![](https://gitee.com/tao191/sds_doc/raw/master/solutions/img/2.png)
 
 其中，基于以太网的RoCE代表了下一代存储网络的开放、创新特性，比FC性能更高、时延更低，同时兼容IP网络的优势，还可以实现数据中心全以太化、全IP化，因此NVMe over RoCE是NoF的最优承载网络方案，也已成为业界NoF的主流技术方向，各主流存储厂商和主要的虚拟化厂商Vmware也在都支持NVMe over RoCE技术。
 |   |NetAPP   |Pure Storage   |IBM   |HPE   |EMC   |HDS   |Vmware   |
@@ -24,7 +25,7 @@ NVMe over RoCE技术出现后，在性能方面轻松超越了传统SCSI FC技�
 
 为了解决设备能够被主机及时发现，以及使得存储网络具备故障快速感知能力，存储节点，主机节点以及网络交换机通过定义新的发现和通告协议，实现网络内的设备自动注册和故障自动处理。实现原理如下：
 
-![](https://gitee.com/tao191/sds_doc/blob/master/solutions/img/3.png)
+![](https://gitee.com/tao191/sds_doc/raw/master/solutions/img/3.png)
 
 主机和存储作为端点设备，接入Fabric网络后，主动向交换机Fabric注册节点信息，交换机实现已注册的设备信息在Fabric网络（iNOF网络）内的所有交换机之间信息同步，TOR接入交换机实时检测接入设备的端口状态和交换机的网络端口状态，并实时通知到订阅状态通知的主机和存储节点。
 主机、存储与交换机通告的协议采用LLDP扩展TLV实现，同时为了与LLDP TLV兼容和隔离，通过LLDP通告的关键索引信息区分，LLDP关键索引信息由2个构成：chassis ID和portID，chassis ID采用端口的MAC地址，portID构成采用2部分：前缀+IP对应的端口名称，前缀采用特定字符：discovery_，表示用于设备自动发现的名称；
@@ -48,7 +49,7 @@ NVMe over RoCE技术出现后，在性能方面轻松超越了传统SCSI FC技�
 
 交换机实现在Fabric内（iNOF网络内），实现注册设备信息的全局同步。
 
-![](https://gitee.com/tao191/sds_doc/blob/master/solutions/img/4.png)
+![](https://gitee.com/tao191/sds_doc/raw/master/solutions/img/4.png)
 
 在交换机Fabric网络中，其中一台或两台交换机设备作为反射器（Reflector），其余交换机设备作为客户端（Client）。每个反射器和客户端之间都需要建立iNOF连接（绿色虚线）从而可以传输iNOF报文。iNOF客户端之间不需要建立iNOF连接，只需要与主机（Host）直连。iNOF反射器之间不需要建立iNOF连接，两者互为备份，与主机直连的接入设备也可以作为iNOF反射器。iNOF报文是TCP封装的报文，TCP端口号范围为10000到57999，缺省值为19516，包含iNOF关键信息的内容承载在TCP报文的Data字段内。客户端可以通过iNOF报文将iNOF关键信息发送给反射器，反射器汇总后再发往其他客户端。通过iNOF报文可以传输以下几类信息：
 •	建连信息：iNOF反射器和客户端之间需要通过互相交换iNOF报文来建立iNOF连接，具体的建立过程类似TCP建连。
@@ -69,7 +70,7 @@ iNOF交换机在检测到网络状态发生变化时，会把信息通告到Zone
 # 应用指导
 以交换机组网为例，4台server，每如server分别使用2个网络端口，接入到2个交换机上，存储双控，每个控制器使用2个端口分别接入到2个交换机上。见下图：
 
-![](https://gitee.com/tao191/sds_doc/blob/master/solutions/img/5.png)
+![](https://gitee.com/tao191/sds_doc/raw/master/solutions/img/5.png)
 
 ## •	基于点对点的IP业务域配置规则说明
 
@@ -162,7 +163,7 @@ o 登录DeviceManager。
 o 2、选择“服务 > 网络 > RoCE网络”。进入“RoCE网络”信息展示页面。
 o 3、选择需要启用SNSD功能的端口，单击“批量配置SNSD > 批量启用SNSD”
 
-![](https://gitee.com/tao191/sds_doc/blob/master/solutions/img/6.png)
+![](https://gitee.com/tao191/sds_doc/raw/master/solutions/img/6.png)
 
 ## 主机配置
 使能开启服务有2种方式，第一种方式是在安装时直接启动，第2种方式是完成安装之后重新启动NoF+特性服务。
@@ -217,19 +218,19 @@ restrain-time = 0
 可靠性场景：故障场景下，对比开启该特性前后，业务归零时间，从5-10S收敛到<1S。
 开启特性前：
 
-![](https://gitee.com/tao191/sds_doc/blob/master/solutions/img/7.png)
+![](https://gitee.com/tao191/sds_doc/raw/master/solutions/img/7.png)
 
 开启特性后：
 
-![](https://gitee.com/tao191/sds_doc/blob/master/solutions/img/8.png)
+![](https://gitee.com/tao191/sds_doc/raw/master/solutions/img/8.png)
 
 
 易用性场景：网络基础互联互通后，业务配置和配置变更只需要在交换机单点配置，配置完后存储设备和主机设备即插即用，NVMe设备自动发现，自动扫盘，自动故障恢复接入，不再需要人为干预。
 
-![](https://gitee.com/tao191/sds_doc/blob/master/solutions/img/9.png)
+![](https://gitee.com/tao191/sds_doc/raw/master/solutions/img/9.png)
 
 # 生态构建
 
-![](https://gitee.com/tao191/sds_doc/blob/master/solutions/img/10.png)
+![](https://gitee.com/tao191/sds_doc/raw/master/solutions/img/10.png)
 
 基于NVMe over RoCE的增强NoF+特性方案，在标准生态，设备生态，社区和操作系统生态等方面已经逐步打开局面，NVMe和IETF相关的国际标准工作也在推进中，国内主流存储厂商和交换机厂商，例如H3C和宏杉科技，以及浪潮等厂家也逐步跟进该技术。华为以及其他相关厂商，也逐步在相关领域开展了越来越多的创新实践，为数据基础设施领域建设打开新格局，NVMe over RoCE生态逐渐走向成熟。
