@@ -56,6 +56,13 @@ https://developer.aliyun.com/mirror/rustup?spm=a2c6h.13651102.0.0.3ca81b114Iqa71
 # 安装依赖包
 yum install cmake libuv-devel lz4-devel xz-devel double-conversion-devel libdwarf-devel libunwind-devel libaio-devel gflags-devel glog-devel gtest-devel gmock-devel lld gperftools-devel openssl-devel gcc gcc-c++ boost-devel libatomic libibverbs-devel rsync gperftools-libs libevent-devel glibc-devel python3-devel
 
+# 下载依赖的第三方组件
+cd  3FS
+git submodule update --init --recursive
+
+# 打补丁
+./patches/apply.sh
+
 # 制作 folly llvm 协程的patch
 wget https://github.com/facebook/folly/commit/8f8f6cfae4ff021e9ca098c1ed3d337bc41c1510.patch
 
